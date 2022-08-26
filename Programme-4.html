@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="number" id="input" placeholder="Enter an Integer">
+
+    <input value="Add to List" onclick="addNum()" type="submit">
+    </br>
+    <span>Added Numbers:</span>
+    <p id="inputArray"></p><input onclick="submitHandler()" type="submit">
+    <h1 id="output"></h1>
+    </br>
+    <span>Output:</span>
+    <p id="outputFinal"></p>
+
+
+
+</body>
+
+<script>
+
+    let inputNumbers = []
+    let output = {}
+
+    function addNum() {
+        let num = document.getElementById("input")
+        inputNumbers.push(num.value)
+        num.value = ""
+        document.getElementById("inputArray").innerHTML = inputNumbers.join(",")
+    }
+
+    function submitHandler() {
+        let refArray = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+        refArray.map((ele) => {
+            output[ele] = 0
+            inputNumbers.map((e) => {
+                if (e % ele === 0) {
+                    output[ele] += 1
+                }
+            })
+
+        })
+        document.getElementById("outputFinal").innerHTML = JSON.stringify(output)
+        output = {}
+
+    }
+
+</script>
+
+</html>

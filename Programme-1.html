@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .calc_Body{
+    width: fit-content;
+    height: fit-content;
+    border: 1px solid blue;
+    padding: 5px;
+  }
+  #display{
+    width: 94%;
+    height: 20px;
+    margin: 5px 0px 5px 0px;
+  }
+
+  .btn{
+    width: 40px;
+    height: 30px;
+    margin: 5px 0px 5px 0px;
+  }
+
+
+</style>
+
+<body>
+
+  <div class="calc_Body">
+    <input type="text" id="display">
+    </br>
+    <button  class="btn" onclick="btnClick(9)">9</button>
+    <button  class="btn" onclick="btnClick(8) ">8</button>
+    <button  class="btn" onclick="btnClick(7)">7</button>
+    <button class="btn" onclick="clickOperator('+')">+</button>
+
+    </br>
+    <button class="btn" onclick="btnClick(6)">6</button>
+    <button class="btn" onclick="btnClick(5)">5</button>
+    <button class="btn" onclick="btnClick(4)">4</button>
+    <button class="btn" onclick="clickOperator('-')">-</button>
+    </br>
+    <button class="btn" onclick="btnClick(3)">3</button>
+    <button class="btn" onclick="btnClick(2)">2</button>
+    <button class="btn" onclick="btnClick(1)">1</button>
+    <button class="btn" onclick="clickOperator('*')">*</button>
+    </br>
+    <button class="btn" value="c" onclick="clearAll()">C</button>
+    <button class="btn" onclick="btnClick(0)">0</button>
+    <button class="btn" onclick="clickOperator('/')">/</button>
+    <button class="btn" onclick="equals()">=</button>
+
+  </div>
+
+
+</body>
+<script>
+  let display = document.getElementById("display")
+  let firstNum = ""
+  let operator = ""
+
+  function btnClick(value) {
+    if (display.value === operator) display.value = ""
+    display.value = display.value + value
+  }
+
+  function clickOperator(input) {
+    firstNum = display.value
+    display.value = input
+    operator = input
+  }
+
+  function equals() {
+    if (operator) {
+      display.value = eval(firstNum + operator + display.value)
+      operator = ""
+    }
+  }
+
+  function clearAll() {
+    display.value = ""
+    firstNum = ""
+    operator = ""
+  }
+
+
+</script>
+
+</html>
